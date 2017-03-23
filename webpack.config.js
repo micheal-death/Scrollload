@@ -15,7 +15,7 @@ if (args.env === 'lib') {
             Scrollload: './src/Scrollload.js',
         },
         output: {
-            path: './lib',
+            path: path.join(__dirname, "/lib"),
             filename: '[name].js',
             library: '[name].js',
             libraryTarget: 'umd'
@@ -73,7 +73,7 @@ if (args.env === 'lib') {
     config = {
         entry: {},
         output: {
-            path: './dist',
+            path: path.join(__dirname, "/dist"),
             filename: '[name].js'
         },
         devtool: args.env === 'dist' ? '' : 'eval-source-map',
