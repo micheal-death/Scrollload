@@ -2,7 +2,7 @@
   "name": "scrollload",
   "version": "3.1.0",
   "description": "scroll load more data 滚动加载更多的数据",
-  "main": "lib/Scrollload.js",
+  "main": "src/Scrollload.js",
   "scripts": {
     "start": "webpack-dev-server --env=dev --host 0.0.0.0",
     "dist": "rimraf dist/* & webpack --env=dist",
@@ -15,7 +15,7 @@
     "load",
     "more"
   ],
-  "author": "fa-ge",
+  "author": "micheal-death",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^6.6.1",
@@ -48,7 +48,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fa-ge/Scrollload.git"
+    "url": "git+https://github.com/micheal-death/Scrollload.git"
   },
   "bugs": {
     "url": "https://github.com/fa-ge/Scrollload/issues"
