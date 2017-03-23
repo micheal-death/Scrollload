@@ -146,8 +146,6 @@ export default class Scrollload {
     createBottomDom() {
         this.container.insertAdjacentHTML('beforeend', `<div class="scrollload-bottom">${this._options.loadingHtml}</div>`)
         this.bottomDom = this.container.querySelector('.scrollload-bottom')
-        // fix: 创建底部loading容器时隐藏loading内容
-        this.hideLoadingContent()
     }
 
     createTopDom() {
@@ -180,8 +178,6 @@ export default class Scrollload {
 
     showNoMoreDataDom() {
         this.bottomDom.innerHTML = this._options.noMoreDataHtml
-        // fix: 无数据时显示底部loading内容
-        this.showLoadingContent()
     }
 
     showLoadingDom() {
@@ -235,7 +231,9 @@ export default class Scrollload {
         this.setTopDomClipTop(this.topContentDomHeight)
         this.isRefreshing = false
         // fix: 上拉刷新完成后恢复初始状态
-        this.showNotEnoughRefreshPortDom()
+        setTimeout(() => {
+            this.showNotEnoughRefreshPortDom()
+        }, 300)
     }
 
     // 内容在滑动中的处理
@@ -396,6 +394,8 @@ export default class Scrollload {
 
             this.isLock = true
             this._options.loadMore.call(this, this)
+        } else if (this.bottomDom.style.visibility === 'visible') {
+            this.hideLoadingContent()
         }
     }
 
@@ -437,8 +437,6 @@ export default class Scrollload {
 
     lock() {
         this.isLock = true
-        // fix: 在lock触发后隐藏loading内容
-        this.hideLoadingContent()
     }
 
     unLock() {
